@@ -1,0 +1,17 @@
+@startuml
+actor User
+participant ATMView
+participant ATMController
+participant AuthenticationService
+participant BankingService
+participant BankRepository
+
+User -> ATMView: Enter userId and PIN
+ATMView -> ATMController: Credentials
+ATMController -> AuthenticationService: login(userId, pin)
+AuthenticationService -> BankRepository: findUserById(userId)
+AuthenticationService -> BankRepository: findAccountById(accountId)
+AuthenticationService --> ATMController: Account
+ATMController -> BankingService: record login transaction
+ATMController -> ATMView: Show menu
+@enduml

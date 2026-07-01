@@ -1,0 +1,21 @@
+@startuml
+class ATMController
+class ATMView
+class AuthenticationService
+class BankingService
+class BankRepository
+class Account
+class User
+class Transaction
+enum TransactionType
+
+ATMController --> ATMView
+ATMController --> AuthenticationService
+ATMController --> BankingService
+AuthenticationService --> BankRepository
+BankingService --> BankRepository
+BankRepository o-- Account
+BankRepository o-- User
+Account o-- Transaction
+Transaction --> TransactionType
+@enduml

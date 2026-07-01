@@ -1,0 +1,28 @@
+@startuml
+start
+:Show login screen;
+:Enter User ID and PIN;
+if (Valid credentials?) then (yes)
+  :Show ATM menu;
+  if (Operation selected?) then (Withdraw/Deposit/Transfer/Inquiry)
+    :Validate input;
+    :Update account;
+    :Record transaction;
+    :Show result;
+  endif
+  if (Logout?) then (yes)
+    :Return to login;
+  else (Exit)
+    :Terminate application;
+  endif
+else (no)
+  :Increase failed attempts;
+  if (Attempts == 3?) then (yes)
+    :Lock session;
+    stop
+  else (no)
+    :Retry login;
+  endif
+endif
+stop
+@enduml

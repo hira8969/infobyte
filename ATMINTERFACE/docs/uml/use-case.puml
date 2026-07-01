@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor User
+rectangle "ATM Interface System" {
+  User --> (Login)
+  User --> (View Transaction History)
+  User --> (Withdraw Money)
+  User --> (Deposit Money)
+  User --> (Transfer Funds)
+  User --> (Balance Inquiry)
+  User --> (View Account Information)
+  User --> (Logout)
+  User --> (Exit)
+}
+@enduml

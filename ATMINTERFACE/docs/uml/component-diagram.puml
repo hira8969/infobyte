@@ -1,0 +1,15 @@
+@startuml
+component "Console View" as View
+component "ATM Controller" as Controller
+component "Authentication Service" as Auth
+component "Banking Service" as Banking
+component "Bank Repository" as Repo
+database "In-Memory Collections" as Memory
+
+View --> Controller
+Controller --> Auth
+Controller --> Banking
+Auth --> Repo
+Banking --> Repo
+Repo --> Memory
+@enduml
