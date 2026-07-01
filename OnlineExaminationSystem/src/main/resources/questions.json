@@ -1,0 +1,22 @@
+[
+  {"questionId":1,"questionText":"What is JVM?","optionA":"Java Virtual Machine","optionB":"Java Vendor Machine","optionC":"Java Visual Model","optionD":"None","correctAnswer":"A"},
+  {"questionId":2,"questionText":"Which keyword is used to inherit a class in Java?","optionA":"implements","optionB":"extends","optionC":"inherits","optionD":"super","correctAnswer":"B"},
+  {"questionId":3,"questionText":"Which method is the entry point of a Java application?","optionA":"start()","optionB":"run()","optionC":"main()","optionD":"init()","correctAnswer":"C"},
+  {"questionId":4,"questionText":"Which collection does not allow duplicate elements?","optionA":"List","optionB":"Queue","optionC":"Set","optionD":"Map","correctAnswer":"C"},
+  {"questionId":5,"questionText":"Which package contains Swing classes?","optionA":"java.awt","optionB":"javax.swing","optionC":"java.swing","optionD":"javax.ui","correctAnswer":"B"},
+  {"questionId":6,"questionText":"Which access modifier is most restrictive?","optionA":"public","optionB":"protected","optionC":"private","optionD":"default","correctAnswer":"C"},
+  {"questionId":7,"questionText":"What is encapsulation?","optionA":"Hiding data with methods","optionB":"Running threads","optionC":"Compiling code","optionD":"Creating packages","correctAnswer":"A"},
+  {"questionId":8,"questionText":"Which exception is checked?","optionA":"NullPointerException","optionB":"IOException","optionC":"ArithmeticException","optionD":"ArrayIndexOutOfBoundsException","correctAnswer":"B"},
+  {"questionId":9,"questionText":"Which interface is used for button click events?","optionA":"Runnable","optionB":"Serializable","optionC":"ActionListener","optionD":"MouseWheelListener","correctAnswer":"C"},
+  {"questionId":10,"questionText":"Which layout manager supports card switching?","optionA":"GridLayout","optionB":"CardLayout","optionC":"FlowLayout","optionD":"BorderLayout","correctAnswer":"B"},
+  {"questionId":11,"questionText":"What does JDBC stand for?","optionA":"Java Database Connectivity","optionB":"Java Data Binary Code","optionC":"Joint Database Compiler","optionD":"Java Design Connector","correctAnswer":"A"},
+  {"questionId":12,"questionText":"Which keyword prevents inheritance?","optionA":"static","optionB":"final","optionC":"abstract","optionD":"volatile","correctAnswer":"B"},
+  {"questionId":13,"questionText":"Which class is immutable?","optionA":"StringBuilder","optionB":"StringBuffer","optionC":"String","optionD":"ArrayList","correctAnswer":"C"},
+  {"questionId":14,"questionText":"Which operator compares object references?","optionA":"=","optionB":"==","optionC":"equals","optionD":"!=","correctAnswer":"B"},
+  {"questionId":15,"questionText":"Which OOP concept allows method overloading?","optionA":"Polymorphism","optionB":"Abstraction","optionC":"Composition","optionD":"Association","correctAnswer":"A"},
+  {"questionId":16,"questionText":"Which component displays tabular data in Swing?","optionA":"JList","optionB":"JTable","optionC":"JTree","optionD":"JPanel","correctAnswer":"B"},
+  {"questionId":17,"questionText":"Which class creates a password input field?","optionA":"JTextField","optionB":"JPasswordField","optionC":"JLabel","optionD":"JTextArea","correctAnswer":"B"},
+  {"questionId":18,"questionText":"Which block always executes after try/catch?","optionA":"throw","optionB":"throws","optionC":"finally","optionD":"final","correctAnswer":"C"},
+  {"questionId":19,"questionText":"Which principle says a class should have one reason to change?","optionA":"OCP","optionB":"SRP","optionC":"DIP","optionD":"LSP","correctAnswer":"B"},
+  {"questionId":20,"questionText":"Which Java feature provides multiple threads of execution?","optionA":"Serialization","optionB":"Reflection","optionC":"Multithreading","optionD":"Generics","correctAnswer":"C"}
+]
