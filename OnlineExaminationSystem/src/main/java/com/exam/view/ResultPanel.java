@@ -46,7 +46,7 @@ public class ResultPanel extends JPanel {
 
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         actions.setOpaque(false);
-        AppTheme.styleButton(logoutButton);
+        AppTheme.styleDangerButton(logoutButton);
         actions.add(logoutButton);
         add(actions, BorderLayout.SOUTH);
     }

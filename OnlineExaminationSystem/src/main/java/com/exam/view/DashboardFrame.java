@@ -63,7 +63,7 @@ public class DashboardFrame extends JFrame {
         header.setOpaque(false);
         welcomeLabel = AppTheme.label("Welcome Student", AppTheme.HEADING);
         JButton headerLogoutButton = new JButton("Logout");
-        AppTheme.styleSecondaryButton(headerLogoutButton);
+        AppTheme.styleDangerButton(headerLogoutButton);
         headerLogoutButton.addActionListener(event -> logoutButton.doClick());
         header.add(welcomeLabel, BorderLayout.WEST);
         header.add(headerLogoutButton, BorderLayout.EAST);
@@ -83,8 +83,8 @@ public class DashboardFrame extends JFrame {
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 12));
         actions.setOpaque(false);
         AppTheme.styleButton(profileButton);
-        AppTheme.styleButton(startExamButton);
-        AppTheme.styleSecondaryButton(logoutButton);
+        AppTheme.styleSuccessButton(startExamButton);
+        AppTheme.styleDangerButton(logoutButton);
         actions.add(profileButton);
         actions.add(startExamButton);
         actions.add(logoutButton);

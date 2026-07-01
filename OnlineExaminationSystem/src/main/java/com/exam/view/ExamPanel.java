@@ -66,7 +66,7 @@ public class ExamPanel extends JPanel {
         actions.setOpaque(false);
         AppTheme.styleSecondaryButton(previousButton);
         AppTheme.styleButton(nextButton);
-        AppTheme.styleButton(submitButton);
+        AppTheme.styleWarningButton(submitButton);
         actions.add(previousButton);
         actions.add(nextButton);
         actions.add(submitButton);

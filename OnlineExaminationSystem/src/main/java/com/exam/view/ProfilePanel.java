@@ -49,7 +49,7 @@ public class ProfilePanel extends JPanel {
 
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         actions.setOpaque(false);
-        AppTheme.styleButton(saveButton);
+        AppTheme.styleSuccessButton(saveButton);
         AppTheme.styleSecondaryButton(cancelButton);
         actions.add(cancelButton);
         actions.add(saveButton);

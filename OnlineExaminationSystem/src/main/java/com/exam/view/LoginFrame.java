@@ -62,7 +62,7 @@ public class LoginFrame extends JFrame {
         actions.setOpaque(false);
         AppTheme.styleButton(loginButton);
         AppTheme.styleSecondaryButton(resetButton);
-        AppTheme.styleSecondaryButton(exitButton);
+        AppTheme.styleDangerButton(exitButton);
         actions.add(loginButton);
         actions.add(resetButton);
         actions.add(exitButton);

@@ -10,6 +10,10 @@ import java.awt.Font;
 
 final class AppTheme {
     static final Color PRIMARY = new Color(34, 89, 172);
+    static final Color SUCCESS = new Color(22, 128, 84);
+    static final Color WARNING = new Color(194, 105, 0);
+    static final Color DANGER = new Color(190, 48, 48);
+    static final Color SECONDARY = new Color(226, 232, 240);
     static final Color BACKGROUND = new Color(246, 248, 252);
     static final Color SURFACE = Color.WHITE;
     static final Color TEXT = new Color(28, 35, 48);
@@ -21,19 +25,34 @@ final class AppTheme {
     }
 
     static void styleButton(JButton button) {
-        button.setFont(BODY);
-        button.setFocusPainted(false);
-        button.setBackground(PRIMARY);
-        button.setForeground(Color.WHITE);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 18, 10, 18));
+        styleSolidButton(button, PRIMARY, Color.WHITE);
     }
 
     static void styleSecondaryButton(JButton button) {
+        styleSolidButton(button, SECONDARY, TEXT);
+    }
+
+    static void styleSuccessButton(JButton button) {
+        styleSolidButton(button, SUCCESS, Color.WHITE);
+    }
+
+    static void styleWarningButton(JButton button) {
+        styleSolidButton(button, WARNING, Color.WHITE);
+    }
+
+    static void styleDangerButton(JButton button) {
+        styleSolidButton(button, DANGER, Color.WHITE);
+    }
+
+    private static void styleSolidButton(JButton button, Color background, Color foreground) {
         button.setFont(BODY);
         button.setFocusPainted(false);
-        button.setBackground(new Color(226, 232, 240));
-        button.setForeground(TEXT);
-        button.setBorder(BorderFactory.createEmptyBorder(10, 18, 10, 18));
+        button.setBorderPainted(false);
+        button.setOpaque(true);
+        button.setContentAreaFilled(true);
+        button.setBackground(background);
+        button.setForeground(foreground);
+        button.setBorder(BorderFactory.createEmptyBorder(11, 20, 11, 20));
     }
 
     static JPanel surface() {
