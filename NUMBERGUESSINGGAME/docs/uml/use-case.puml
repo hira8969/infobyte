@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+actor Player
+
+rectangle "Number Guessing Game" {
+  usecase "Enter Player Name" as UC1
+  usecase "Select Difficulty" as UC2
+  usecase "Start Round" as UC3
+  usecase "Submit Guess" as UC4
+  usecase "Receive Hint" as UC5
+  usecase "View Result" as UC6
+  usecase "View History" as UC7
+  usecase "View Statistics" as UC8
+  usecase "View Leaderboard" as UC9
+  usecase "Play Again" as UC10
+}
+
+Player --> UC1
+Player --> UC2
+Player --> UC3
+Player --> UC4
+UC4 --> UC5
+UC4 --> UC6
+Player --> UC7
+Player --> UC8
+Player --> UC9
+Player --> UC10
+@enduml

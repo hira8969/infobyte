@@ -1,0 +1,50 @@
+@startuml
+class Main
+class GameController
+class GameService
+class MainFrame
+class WelcomePanel
+class GamePanel
+class ResultPanel
+class Game
+class RoundResult
+class GameStatistics
+class LeaderboardEntry
+class RandomNumberGenerator
+class ValidationUtil
+
+enum DifficultyLevel {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum GameStatus {
+  READY
+  IN_PROGRESS
+  WON
+  LOST
+}
+
+enum GuessOutcome {
+  TOO_LOW
+  TOO_HIGH
+  CORRECT
+  GAME_OVER
+}
+
+Main --> GameController
+GameController --> GameService
+GameController --> MainFrame
+MainFrame *-- WelcomePanel
+MainFrame *-- GamePanel
+MainFrame *-- ResultPanel
+GameService --> Game
+GameService --> RoundResult
+GameService --> GameStatistics
+GameService --> LeaderboardEntry
+GameService --> RandomNumberGenerator
+GameService --> ValidationUtil
+Game --> DifficultyLevel
+Game --> GameStatus
+@enduml

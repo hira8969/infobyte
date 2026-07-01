@@ -1,0 +1,36 @@
+@startuml
+start
+:Open application;
+:Enter player name;
+:Select difficulty;
+:Generate target number;
+
+while (Round active?) is (yes)
+  :Enter guess;
+  if (Input valid?) then (yes)
+    :Increment attempts;
+    if (Guess correct?) then (yes)
+      :Store win result;
+      :Show win screen;
+      break
+    else (no)
+      if (Attempts exhausted?) then (yes)
+        :Store loss result;
+        :Show loss screen;
+        break
+      else (no)
+        :Show Too High or Too Low;
+      endif
+    endif
+  else (no)
+    :Show validation message;
+  endif
+endwhile
+
+if (Play again?) then (yes)
+  :Start new round;
+else (no)
+  :Exit application;
+endif
+stop
+@enduml

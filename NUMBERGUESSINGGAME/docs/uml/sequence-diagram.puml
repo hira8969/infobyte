@@ -1,0 +1,27 @@
+@startuml
+actor Player
+participant WelcomePanel
+participant GameController
+participant GameService
+participant RandomNumberGenerator
+participant GamePanel
+participant ResultPanel
+
+Player -> WelcomePanel: select difficulty and start
+WelcomePanel -> GameController: start event
+GameController -> GameService: startGame(player, difficulty)
+GameService -> RandomNumberGenerator: generate(difficulty)
+RandomNumberGenerator --> GameService: target number
+GameService --> GameController: Game
+GameController -> GamePanel: prepareForGame(game)
+
+Player -> GamePanel: submit guess
+GamePanel -> GameController: guess event
+GameController -> GameService: submitGuess(input)
+GameService --> GameController: GuessResult
+GameController -> GamePanel: updateAfterGuess()
+
+alt round complete
+  GameController -> ResultPanel: showResult()
+end
+@enduml
