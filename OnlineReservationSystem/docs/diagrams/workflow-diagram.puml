@@ -1,0 +1,25 @@
+@startuml
+start
+:Open Login Screen;
+if (Valid credentials?) then (yes)
+  :Open Dashboard;
+  if (Book ticket?) then (yes)
+    :Enter journey details;
+    :Fetch train name;
+    :Validate fields;
+    :Generate PNR;
+    :Save reservation;
+    :Show confirmation;
+  else (cancel)
+    :Enter PNR;
+    :Fetch reservation;
+    if (Confirm cancellation?) then (yes)
+      :Delete reservation;
+      :Show success message;
+    endif
+  endif
+else (no)
+  :Show error message;
+endif
+stop
+@enduml

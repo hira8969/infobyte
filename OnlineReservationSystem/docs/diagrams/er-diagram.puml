@@ -1,0 +1,30 @@
+@startuml
+entity users {
+  * id : INTEGER
+  --
+  username : TEXT
+  password : TEXT
+}
+
+entity trains {
+  * train_no : INTEGER
+  --
+  train_name : TEXT
+}
+
+entity reservations {
+  * id : INTEGER
+  --
+  pnr : TEXT
+  passenger_name : TEXT
+  train_no : INTEGER
+  train_name : TEXT
+  class_type : TEXT
+  journey_date : TEXT
+  source_station : TEXT
+  destination_station : TEXT
+  booking_time : TEXT
+}
+
+trains ||--o{ reservations : has
+@enduml

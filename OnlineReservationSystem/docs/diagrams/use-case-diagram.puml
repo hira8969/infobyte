@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor Admin
+
+rectangle "Online Reservation System" {
+  usecase "Login" as UC1
+  usecase "Book Ticket" as UC2
+  usecase "Generate PNR" as UC3
+  usecase "Fetch Reservation" as UC4
+  usecase "Cancel Reservation" as UC5
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC4
+Admin --> UC5
+UC2 --> UC3
+@enduml

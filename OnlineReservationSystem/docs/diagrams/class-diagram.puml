@@ -1,0 +1,39 @@
+@startuml
+class Main
+class DatabaseConnection
+class LoginController
+class ReservationController
+class CancellationController
+class AuthService
+class ReservationService
+class UserDAO
+class TrainDAO
+class ReservationDAO
+class User
+class Train
+class Reservation
+class PNRGenerator
+class ValidationUtil
+class LoginFrame
+class DashboardFrame
+class ReservationFrame
+class CancellationFrame
+
+LoginFrame --> LoginController
+ReservationFrame --> ReservationController
+CancellationFrame --> CancellationController
+LoginController --> AuthService
+ReservationController --> ReservationService
+CancellationController --> ReservationService
+AuthService --> UserDAO
+ReservationService --> TrainDAO
+ReservationService --> ReservationDAO
+ReservationService --> PNRGenerator
+ReservationService --> ValidationUtil
+ReservationDAO --> Reservation
+TrainDAO --> Train
+UserDAO --> User
+UserDAO --> DatabaseConnection
+TrainDAO --> DatabaseConnection
+ReservationDAO --> DatabaseConnection
+@enduml
