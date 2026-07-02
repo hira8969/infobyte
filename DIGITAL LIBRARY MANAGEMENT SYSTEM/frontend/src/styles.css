@@ -50,7 +50,8 @@ body {
 
 .metric,
 .panel,
-.book-card {
+.book-card,
+.auth-panel {
   background: white;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -106,6 +107,136 @@ body {
   padding: 18px;
 }
 
+.auth-panel {
+  padding: 20px;
+  box-shadow: 0 16px 40px rgba(29, 36, 51, .08);
+}
+
+.auth-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.auth-icon {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: white;
+  background: var(--brand);
+  flex: 0 0 auto;
+}
+
+.auth-head h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.auth-head p {
+  color: var(--muted);
+  margin: 2px 0 0;
+  font-size: .92rem;
+}
+
+.auth-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  background: #edf2f7;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.auth-switch button {
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 10px;
+  color: var(--muted);
+  background: transparent;
+  font-weight: 700;
+}
+
+.auth-switch button.active {
+  color: var(--ink);
+  background: white;
+  box-shadow: 0 6px 18px rgba(29, 36, 51, .08);
+}
+
+.auth-error {
+  padding: 10px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #991b1b;
+  background: #fef2f2;
+  font-size: .9rem;
+  margin-bottom: 12px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-field {
+  display: grid;
+  gap: 6px;
+}
+
+.auth-field span {
+  color: var(--ink);
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.auth-field div {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfe;
+  color: var(--muted);
+}
+
+.auth-field div:focus-within {
+  border-color: var(--brand);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, .12);
+}
+
+.auth-field input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+}
+
+.auth-field input::placeholder {
+  color: #9aa5b4;
+}
+
+.password-note {
+  margin: -2px 0 0;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+
+.auth-submit {
+  min-height: 46px;
+  font-weight: 800;
+}
+
 .btn-primary {
   --bs-btn-bg: var(--brand);
   --bs-btn-border-color: var(--brand);
@@ -117,5 +248,9 @@ body {
   .hero {
     padding: 24px;
     min-height: 280px;
+  }
+
+  .auth-panel {
+    padding: 16px;
   }
 }

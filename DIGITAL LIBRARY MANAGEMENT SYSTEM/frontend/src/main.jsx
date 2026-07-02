@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BookOpen, Library, LogIn, Search, Shield, UserPlus } from 'lucide-react';
+import { BookOpen, Library, Lock, LogIn, Mail, Phone, Search, Shield, User, UserPlus } from 'lucide-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { api, setToken } from './services/api';
@@ -11,6 +11,9 @@ function App() {
   const [stats, setStats] = useState(null);
   const [query, setQuery] = useState('');
   const [message, setMessage] = useState('');
+  const [authMode, setAuthMode] = useState('login');
+  const [authError, setAuthError] = useState('');
+  const [isSubmittingAuth, setIsSubmittingAuth] = useState(false);
   const isAdmin = auth?.roles?.includes('ADMIN');
 
   useEffect(() => {
@@ -38,11 +41,21 @@ function App() {
   }
 
   async function handleAuth(endpoint, form) {
-    const data = Object.fromEntries(new FormData(form));
-    const res = await api.post(`/auth/${endpoint}`, data);
-    localStorage.setItem('auth', JSON.stringify(res.data));
-    setAuth(res.data);
-    setMessage(`Welcome ${res.data.username}`);
+    try {
+      setIsSubmittingAuth(true);
+      setAuthError('');
+      const data = Object.fromEntries(new FormData(form));
+      const res = await api.post(`/auth/${endpoint}`, data);
+      localStorage.setItem('auth', JSON.stringify(res.data));
+      setAuth(res.data);
+      setMessage(`Welcome ${res.data.username}`);
+    } catch (error) {
+      const apiMessage = error.response?.data?.message;
+      const fieldErrors = error.response?.data?.fields;
+      setAuthError(apiMessage || Object.values(fieldErrors || {})[0] || 'Authentication failed. Please try again.');
+    } finally {
+      setIsSubmittingAuth(false);
+    }
   }
 
   async function issueBook(bookId) {
@@ -133,27 +146,13 @@ function App() {
 
           <aside className="col-lg-4">
             {!auth && (
-              <div className="panel" id="login">
-                <h2><LogIn size={20} /> Login</h2>
-                <form onSubmit={(e) => { e.preventDefault(); handleAuth('login', e.currentTarget); }}>
-                  <input className="form-control mb-2" name="username" placeholder="Username" required />
-                  <input className="form-control mb-3" name="password" placeholder="Password" type="password" required />
-                  <button className="btn btn-dark w-100">Login</button>
-                </form>
-              </div>
-            )}
-            {!auth && (
-              <div className="panel mt-3">
-                <h2><UserPlus size={20} /> Register</h2>
-                <form onSubmit={(e) => { e.preventDefault(); handleAuth('register', e.currentTarget); }}>
-                  <input className="form-control mb-2" name="fullName" placeholder="Full name" required />
-                  <input className="form-control mb-2" name="email" placeholder="Email" type="email" required />
-                  <input className="form-control mb-2" name="username" placeholder="Username" required />
-                  <input className="form-control mb-2" name="phoneNumber" placeholder="Phone number" />
-                  <input className="form-control mb-3" name="password" placeholder="Strong password" type="password" required />
-                  <button className="btn btn-outline-dark w-100">Create Account</button>
-                </form>
-              </div>
+              <AuthPanel
+                authMode={authMode}
+                setAuthMode={setAuthMode}
+                authError={authError}
+                isSubmitting={isSubmittingAuth}
+                onSubmit={handleAuth}
+              />
             )}
             {auth && (
               <div className="panel">
@@ -169,6 +168,83 @@ function App() {
         </section>
       </main>
     </div>
+  );
+}
+
+function AuthPanel({ authMode, setAuthMode, authError, isSubmitting, onSubmit }) {
+  const isLogin = authMode === 'login';
+
+  function switchMode(mode) {
+    setAuthMode(mode);
+  }
+
+  return (
+    <div className="auth-panel" id="login">
+      <div className="auth-head">
+        <span className="auth-icon">{isLogin ? <LogIn size={22} /> : <UserPlus size={22} />}</span>
+        <div>
+          <h2>{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
+          <p>{isLogin ? 'Access your library dashboard.' : 'Start borrowing and reserving books.'}</p>
+        </div>
+      </div>
+
+      <div className="auth-switch" role="tablist" aria-label="Authentication mode">
+        <button
+          type="button"
+          className={isLogin ? 'active' : ''}
+          onClick={() => switchMode('login')}
+          aria-selected={isLogin}
+        >
+          Login
+        </button>
+        <button
+          type="button"
+          className={!isLogin ? 'active' : ''}
+          onClick={() => switchMode('register')}
+          aria-selected={!isLogin}
+        >
+          Register
+        </button>
+      </div>
+
+      {authError && <div className="auth-error">{authError}</div>}
+
+      <form className="auth-form" onSubmit={(e) => { e.preventDefault(); onSubmit(authMode, e.currentTarget); }}>
+        {!isLogin && (
+          <>
+            <Field icon={<User size={17} />} label="Full name" name="fullName" autoComplete="name" required />
+            <Field icon={<Mail size={17} />} label="Email" name="email" type="email" autoComplete="email" required />
+          </>
+        )}
+        <Field icon={<User size={17} />} label="Username" name="username" autoComplete="username" required />
+        {!isLogin && <Field icon={<Phone size={17} />} label="Phone number" name="phoneNumber" autoComplete="tel" />}
+        <Field
+          icon={<Lock size={17} />}
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete={isLogin ? 'current-password' : 'new-password'}
+          minLength={isLogin ? undefined : 8}
+          required
+        />
+        {!isLogin && <p className="password-note">Use at least 8 characters with uppercase, lowercase, and a number.</p>}
+        <button className="btn btn-primary auth-submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Please wait...' : isLogin ? 'Login' : 'Create Account'}
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function Field({ icon, label, name, type = 'text', ...props }) {
+  return (
+    <label className="auth-field">
+      <span>{label}</span>
+      <div>
+        {icon}
+        <input name={name} type={type} placeholder={label} {...props} />
+      </div>
+    </label>
   );
 }
 
