@@ -1,0 +1,16 @@
+@startuml
+class User
+class Role
+class Book
+class IssueRecord
+class Fine
+class Reservation
+class ContactQuery
+
+User "1" -- "*" IssueRecord
+User "1" -- "*" Reservation
+User "*" -- "*" Role
+Book "1" -- "*" IssueRecord
+Book "1" -- "*" Reservation
+IssueRecord "1" -- "0..1" Fine
+@enduml

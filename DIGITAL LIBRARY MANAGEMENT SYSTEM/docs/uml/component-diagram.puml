@@ -1,0 +1,14 @@
+@startuml
+component "React Frontend" as UI
+component "Spring MVC Controllers" as C
+component "Services" as S
+component "Repositories" as R
+component "JWT Security" as SEC
+database "MySQL" as DB
+
+UI --> C
+C --> SEC
+C --> S
+S --> R
+R --> DB
+@enduml

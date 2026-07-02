@@ -1,0 +1,19 @@
+@startuml
+entity users
+entity roles
+entity user_roles
+entity books
+entity issue_records
+entity fines
+entity reservations
+entity contact_queries
+entity audit_logs
+
+users ||--o{ user_roles
+roles ||--o{ user_roles
+users ||--o{ issue_records
+books ||--o{ issue_records
+issue_records ||--o| fines
+users ||--o{ reservations
+books ||--o{ reservations
+@enduml

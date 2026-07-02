@@ -3,6 +3,7 @@ package com.library.controller;
 import com.library.entity.Fine;
 import com.library.service.FineService;
 import java.util.List;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +25,13 @@ public class FineController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Fine> allFines() {
         return fineService.allFines();
     }
 
     @PatchMapping("/{id}/paid")
+    @PreAuthorize("hasRole('ADMIN')")
     public Fine markPaid(@PathVariable Long id) {
         return fineService.markPaid(id);
     }

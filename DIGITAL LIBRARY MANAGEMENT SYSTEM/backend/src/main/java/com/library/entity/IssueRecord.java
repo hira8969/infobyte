@@ -1,5 +1,6 @@
 package com.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,12 +15,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "issue_records")
 public class IssueRecord {
     @Id
@@ -48,4 +46,68 @@ public class IssueRecord {
 
     @OneToOne(mappedBy = "issueRecord", cascade = CascadeType.ALL, orphanRemoval = true)
     private Fine fine;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public LocalDate getIssueDate() {
+        return issueDate;
+    }
+
+    public void setIssueDate(LocalDate issueDate) {
+        this.issueDate = issueDate;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public IssueStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(IssueStatus status) {
+        this.status = status;
+    }
+
+    public Fine getFine() {
+        return fine;
+    }
+
+    public void setFine(Fine fine) {
+        this.fine = fine;
+    }
 }

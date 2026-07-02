@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor Admin
+actor User
+rectangle "Digital Library Management System" {
+  User --> (Register/Login)
+  User --> (Browse/Search Books)
+  User --> (Issue Book)
+  User --> (Return Book)
+  User --> (Reserve Book)
+  User --> (View Fines)
+  User --> (Submit Query)
+  Admin --> (Manage Books)
+  Admin --> (Manage Users)
+  Admin --> (Manage Fines)
+  Admin --> (Manage Reservations)
+  Admin --> (View Queries)
+  Admin --> (View Reports)
+}
+@enduml

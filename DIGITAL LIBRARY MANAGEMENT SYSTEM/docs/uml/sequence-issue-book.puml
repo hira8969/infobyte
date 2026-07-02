@@ -1,0 +1,19 @@
+@startuml
+actor User
+participant "IssueController" as C
+participant "IssueService" as S
+participant "BookRepository" as B
+participant "IssueRepository" as I
+database MySQL
+
+User -> C: POST /api/issues
+C -> S: issue(bookId)
+S -> B: findById(bookId)
+B -> MySQL: select book
+S -> S: validate availability
+S -> B: decrement availableQuantity
+S -> I: save IssueRecord
+I -> MySQL: insert issue_records
+S --> C: IssueRecord
+C --> User: 200 OK
+@enduml

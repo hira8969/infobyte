@@ -1,0 +1,12 @@
+@startuml
+node "Browser" {
+  artifact "React App"
+}
+node "Application Server" {
+  artifact "Spring Boot Jar"
+}
+database "MySQL 8"
+
+"React App" --> "Spring Boot Jar" : HTTPS REST
+"Spring Boot Jar" --> "MySQL 8" : JDBC
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+start
+:Find issue record;
+if (Already returned?) then (yes)
+  :Reject request;
+  stop
+endif
+:Set return date;
+:Increase available quantity;
+if (Return date after due date?) then (yes)
+  :Calculate fine;
+  :Create fine record;
+endif
+:Mark issue returned;
+stop
+@enduml
